@@ -1,0 +1,12 @@
+ docker exec -it 9b79bf17a64f
+
+ 
+PS C:\Users\hamma> docker exec -it 9b79bf17a64f bash root@9b79bf17a64f:/ psql -U postgres
+
+/run
+
+
+PS C:\Users\hamma> docker exec -it 9b79bf17a64f psql -U postgres
+\l listing
+\c CatalogDB
+\d 'listing tables
