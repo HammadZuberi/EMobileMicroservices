@@ -6,6 +6,20 @@ namespace CatalogAPI.Products.UpdateProduct
         List<string> Category, string Description, string ImageFile, decimal Price) : ICommand<UpdateProductResult>;
     public record UpdateProductResult(bool IsSuccess);
 
+
+    public class UpdateProductValidator: AbstractValidator<UpdateProductCommand>
+    {
+        public UpdateProductValidator()
+        {
+            
+            RuleFor(x=> x.Id).NotEmpty().WithMessage("Product Id is required");
+
+            RuleFor(x=> x.Name).NotEmpty().WithMessage("Name is required").
+                Length(2,150).WithMessage("Name must be between 2 and 15 cahrachters");
+
+            RuleFor(x=> x.Price).GreaterThan(0).WithMessage("Price must be Greater than 0");
+        }
+    }
     //inject Idocument seession for injecting in primary cotor
     internal class UpdateProductCommandHandler(IDocumentSession session, ILogger<UpdateProductCommandHandler> logger)
         : ICommandHandler<UpdateProductCommand, UpdateProductResult>

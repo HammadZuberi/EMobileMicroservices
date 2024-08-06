@@ -21,23 +21,18 @@ namespace CatalogAPI.Products.CreateProduct
 
     //using primary ctor and directly as marten is already absttract 
     //internal class CreateProductCmdHandler
-    internal class CreateProductCmdHandler(IDocumentSession session,IValidator<CreateProductCommand> validator)
+    internal class CreateProductCmdHandler(IDocumentSession session, ILogger<CreateProductCmdHandler> logger, IValidator<CreateProductCommand> validator)
     : ICommandHandler<CreateProductCommand, CreateProductResult>
     {
         public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
         {
             //buissness logig to create a product
-            //TODO
-            //save to Db
+            //save to Db    
             //return result
 
-            var result = await validator.ValidateAsync(command,cancellationToken);
-            var error = result.Errors.Select(e=> e.ErrorMessage).ToList();
+            //buissness logig to create a product
+            logger.LogInformation($"CreateProductCmdHandler called with get cmd {command}");
 
-            if (error.Any()) {
-
-                throw new ValidationException(error.FirstOrDefault());
-            }
 
             var product = new Product
             {
