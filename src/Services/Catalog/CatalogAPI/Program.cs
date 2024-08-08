@@ -10,6 +10,7 @@ builder.Services.AddMediatR(config =>
 {
     config.RegisterServicesFromAssemblies(assembly);
     config.AddOpenBehavior(typeof(ValidationBehaviour<,>));    //generic <,>
+    config.AddOpenBehavior(typeof(LoggingBehaviour<,>));    //generic logging for  <,>
 });
 builder.Services.AddMarten(opt =>
 {

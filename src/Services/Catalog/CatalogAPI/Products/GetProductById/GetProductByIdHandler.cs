@@ -10,13 +10,11 @@ namespace CatalogAPI.Products.GetProduct
     //using primary ctor and directly as marten is already absttract 
 
     //internal class CreateProductCmdHandler
-    internal class GetProductByIdQueryHandler(IDocumentSession session, ILogger<GetProductByIdQueryHandler> logger)
+    internal class GetProductByIdQueryHandler(IDocumentSession session)
     : IQueryHandler<GetProductByIdQuery, GetProductByIdResult>
     {
         public async Task<GetProductByIdResult> Handle(GetProductByIdQuery query, CancellationToken cancellationToken)
         {
-            //buissness logig to create a product
-            logger.LogInformation("GetProductQueryHandler called with get cmd {@Query}", query);
 
             var product = await session.LoadAsync<Product>(query.Id, cancellationToken);
 

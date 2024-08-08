@@ -16,12 +16,11 @@ namespace CatalogAPI.Products.UpdateProduct
 
 
     //inject Idocument seession for injecting in primary cotor
-    internal class DeleteProductCommandHandler(IDocumentSession session, ILogger<DeleteProductCommandHandler> logger)
+    internal class DeleteProductCommandHandler(IDocumentSession session)
         : ICommandHandler<DeleteProductCommand, DeleteProductResult>
     {
         public async Task<DeleteProductResult> Handle(DeleteProductCommand command, CancellationToken cancellationToken)
         {
-            logger.LogInformation($" update command looger with command {command}");
             //var product = await session.LoadAsync<Product>(command.Id, cancellationToken);
             //if (product == null)
             //    throw new ProductNotFoundException();

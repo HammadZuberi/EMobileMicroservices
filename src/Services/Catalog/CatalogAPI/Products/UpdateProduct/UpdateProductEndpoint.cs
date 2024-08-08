@@ -14,7 +14,7 @@ namespace CatalogAPI.Products.UpdateProduct
 
                 //var command = request.Adapt<UpdateProductCommand>(); 
                 //same used one record only
-                var result = sender.Send(request);
+                var result =await sender.Send(request);
 
                 var response = result.Adapt<UpdateProductResponse>();
 

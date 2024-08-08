@@ -21,7 +21,7 @@ namespace CatalogAPI.Products.CreateProduct
 
     //using primary ctor and directly as marten is already absttract 
     //internal class CreateProductCmdHandler
-    internal class CreateProductCmdHandler(IDocumentSession session, ILogger<CreateProductCmdHandler> logger, IValidator<CreateProductCommand> validator)
+    internal class CreateProductCmdHandler(IDocumentSession session)
     : ICommandHandler<CreateProductCommand, CreateProductResult>
     {
         public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
@@ -29,9 +29,6 @@ namespace CatalogAPI.Products.CreateProduct
             //buissness logig to create a product
             //save to Db    
             //return result
-
-            //buissness logig to create a product
-            logger.LogInformation($"CreateProductCmdHandler called with get cmd {command}");
 
 
             var product = new Product
