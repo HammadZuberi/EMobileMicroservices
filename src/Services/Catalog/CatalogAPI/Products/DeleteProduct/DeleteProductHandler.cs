@@ -2,14 +2,14 @@
 namespace CatalogAPI.Products.UpdateProduct
 {
 
-    public record DeleteProductCommand(Guid Id) : ICommand<DeleteProductResult>;
+    public record DeleteProductCommand(Guid id) : ICommand<DeleteProductResult>;
     public record DeleteProductResult(bool IsSuccess);
 
     public class DeleteProductValidate : AbstractValidator<DeleteProductCommand>
     {
         public DeleteProductValidate()
         {
-            RuleFor(x => x.Id).NotEmpty().WithMessage("Product Id is required");
+            RuleFor(x => x.id).NotEmpty().WithMessage("Product Id is required");
 
         }
     }
@@ -26,7 +26,7 @@ namespace CatalogAPI.Products.UpdateProduct
             //    throw new ProductNotFoundException();
             //session.Delete(product);
 
-            session.Delete(command.Id);
+            session.Delete(command.id);
             await session.SaveChangesAsync(cancellationToken);
 
             return new DeleteProductResult(true);

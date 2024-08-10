@@ -9,12 +9,12 @@ namespace CatalogAPI.Products.UpdateProduct
         public void AddRoutes(IEndpointRouteBuilder app)
         {
 
-            app.MapPut("products/{Id}", async (Guid Id, ISender sender) =>
+            app.MapDelete("products/{id}", async (Guid id, ISender sender) =>
             {
 
                 //var command = request.Adapt<UpdateProductCommand>(); 
                 //same used one record only
-                var result = await sender.Send(new DeleteProductCommand(Id));
+                var result = await sender.Send(new DeleteProductCommand(id));
 
                 var response = result.Adapt<UpdateProductResponse>();
 
