@@ -26,7 +26,7 @@ namespace CatalogAPI.Products.UpdateProduct
             //    throw new ProductNotFoundException();
             //session.Delete(product);
 
-            session.Delete(command.id);
+            session.Delete<Product>(command.id);
             await session.SaveChangesAsync(cancellationToken);
 
             return new DeleteProductResult(true);

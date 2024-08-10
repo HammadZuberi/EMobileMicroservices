@@ -12,6 +12,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatalogAPI", "Services\Catalog\CatalogAPI\CatalogAPI.csproj", "{22ABBF39-85DA-44AD-8AA7-A5A4D41C7A92}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{E2971EF9-BF9E-4C14-ABAD-E3FAF8BC0F73}"
+	ProjectSection(SolutionItems) = preProject
+		cmdread.txt = cmdread.txt
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildingBlocks", "BuildingBlocks\BuildingBlocks\BuildingBlocks.csproj", "{18CEDBE5-EFA1-4FBC-9863-20204FFBB00B}"
 EndProject
