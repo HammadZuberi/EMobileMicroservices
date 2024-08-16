@@ -1,3 +1,14 @@
 running trhough cmd 
 use the same CD terminal
 //docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
+
+Redis cli command
+
+//docker -> exec IT
+redis-cli 
+cmd> ping return pong //service is active
+
+set key value
+get key
+for all key > keys *
+here get key return "value"
