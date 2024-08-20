@@ -22,7 +22,7 @@ namespace Discount.Grpc.Services
             if (coupon == null)
                 coupon = new Coupon { ProductName = "No Discount", Amount = 0 };
 
-            _logger.LogInformation("Discount retrieved Product {name} ,Amount {amount}, ", coupon.ProductName, coupon.Amount);
+            _logger.LogWarning("Discount retrieved Product {name} ,Amount {amount}, ", coupon.ProductName, coupon.Amount);
 
             var couponModel = new CouponModel()
             { Amount = coupon.Amount, ProductName = coupon.ProductName, Description = coupon.Description, Id = coupon.Id };
@@ -37,7 +37,7 @@ namespace Discount.Grpc.Services
                 throw new RpcException(new Status(StatusCode.InvalidArgument, "Invalid request object"));
 
 
-            _logger.LogInformation("Discount is created succussfully  Product {name} ,Amount {amount}, ", coupon.ProductName, coupon.Amount);
+            _logger.LogWarning("Discount is created succussfully  Product {name} ,Amount {amount}, ", coupon.ProductName, coupon.Amount);
             _context.Coupons.Add(coupon);
             await _context.SaveChangesAsync();
 
@@ -52,7 +52,7 @@ namespace Discount.Grpc.Services
             if (coupon == null)
                 throw new RpcException(new Status(StatusCode.InvalidArgument, "Invalid request object"));
 
-            _logger.LogInformation("Discount is succussfully updated from prev Product {prevProd}  Product {name} ,Amount {amount}, "
+            _logger.LogWarning("Discount is succussfully updated from prev Product {prevProd}  Product {name} ,Amount {amount}, "
                 , request.Coupon.ProductName, coupon.ProductName, coupon.Amount);
 
             _context.Coupons.Update(coupon);
@@ -75,7 +75,7 @@ namespace Discount.Grpc.Services
             _context.Coupons.Remove(coupon);
             await _context.SaveChangesAsync();
 
-            _logger.LogInformation("Discount is succussfully deleted Product {name}", coupon.ProductName);
+            _logger.LogWarning("Discount is succussfully deleted Product {name}", coupon.ProductName);
 
             return new DeleteDiscountResponse() { Success = true };
         }
