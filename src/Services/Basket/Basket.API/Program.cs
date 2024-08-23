@@ -1,12 +1,14 @@
 using BuildingBlocks.Behaviours;
 using BuildingBlocks.Exceptions.Handler;
+using Discount.Grpc;
 using HealthChecks.UI.Client;
 using Microsoft.Extensions.Caching.Distributed;
+using System.Net.Security;
 
 var builder = WebApplication.CreateBuilder(args);
 //Add Services to the  container
 
-
+// App Services
 builder.Services.AddCarter();
 var asemply = typeof(Program).Assembly;
 builder.Services.AddMediatR(conf =>
@@ -19,15 +21,8 @@ builder.Services.AddMediatR(conf =>
 builder.Services.AddScoped<IBasketRepository,BasketRepository>();
 builder.Services.Decorate<IBasketRepository,CachedBasketRepository>();
 
-////manula decorator
-//builder.Services.AddScoped<IBasketRepository>(
-//    provider =>
-//    {
-//        var basketRepo= provider.GetRequiredService<BasketRepository>();
-//    return new CachedBasketRepository(basketRepo,provider.GetRequiredService<IDistributedCache>());
-//    });
 
- //Db
+//Data Services //Db
 builder.Services.AddMarten(opt =>
 {
     opt.Connection(builder.Configuration.GetConnectionString("Database")!);
@@ -45,6 +40,19 @@ builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 builder.Services.AddHealthChecks().
     AddNpgSql(builder.Configuration.GetConnectionString("Database")!)
     .AddRedis(builder.Configuration.GetConnectionString("Redis")!);
+
+
+builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(opt=>
+{
+    opt.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"]!);
+}).ConfigurePrimaryHttpMessageHandler(() =>
+{
+    var handler = new HttpClientHandler {
+        ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+    };
+    return handler;
+
+});
 var app = builder.Build();
 
 // Configure the HTTP pipeline
