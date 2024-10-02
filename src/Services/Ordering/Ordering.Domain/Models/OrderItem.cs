@@ -5,6 +5,7 @@
 		//can easly replace orderid with product id in guid so strongtype
 		//typesaftey >2 refactor >3 readability
 		//public OrderItem(Guid orderId, Guid productId, int quantity, decimal price)
+		//orderitem only be created from order Aggreagate
 		public OrderItem(OrderId orderId, ProductId productId, int quantity, decimal price)
 		{
 			Id = OrderItemID.of(Guid.NewGuid());
