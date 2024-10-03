@@ -37,13 +37,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ordering", "Ordering", "{84
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.API", "Services\Ordering\Ordering.API\Ordering.API.csproj", "{E8541FDC-85FB-4ED9-BBD3-3337DEB41EFE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{12AE97A7-C63D-49E7-BA87-D0C145C93394}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Domain", "Services\Ordering\Ordering.Domain\Ordering.Domain.csproj", "{1602CCC5-E446-46B7-B26B-E93130F49D8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Domain", "Services\Ordering\Ordering.Domain\Ordering.Domain.csproj", "{1602CCC5-E446-46B7-B26B-E93130F49D8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Application", "Services\Ordering\Ordering.Application\Ordering.Application.csproj", "{D054B18F-F962-4936-8476-02C57B33807E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Application", "Services\Ordering\Ordering.Application\Ordering.Application.csproj", "{D054B18F-F962-4936-8476-02C57B33807E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Infrastructure", "Services\Ordering\Ordering.Infrastructure\Ordering.Infrastructure.csproj", "{18C76DCF-84D6-484E-BB5D-2E917644102F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Infrastructure", "Services\Ordering\Ordering.Infrastructure\Ordering.Infrastructure.csproj", "{18C76DCF-84D6-484E-BB5D-2E917644102F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,7 +99,6 @@ Global
 		{401BE961-636D-4057-9ED5-5D5AD67B95FB} = {8EBEFBFA-4BE6-4C21-8AF5-CA4A7D677F06}
 		{84D804E9-9913-4E5E-A111-9C65EC4539BF} = {FBD6B809-EAE1-4E25-9E2F-6100514D9F5A}
 		{E8541FDC-85FB-4ED9-BBD3-3337DEB41EFE} = {84D804E9-9913-4E5E-A111-9C65EC4539BF}
-		{12AE97A7-C63D-49E7-BA87-D0C145C93394} = {FBD6B809-EAE1-4E25-9E2F-6100514D9F5A}
 		{1602CCC5-E446-46B7-B26B-E93130F49D8D} = {84D804E9-9913-4E5E-A111-9C65EC4539BF}
 		{D054B18F-F962-4936-8476-02C57B33807E} = {84D804E9-9913-4E5E-A111-9C65EC4539BF}
 		{18C76DCF-84D6-484E-BB5D-2E917644102F} = {84D804E9-9913-4E5E-A111-9C65EC4539BF}

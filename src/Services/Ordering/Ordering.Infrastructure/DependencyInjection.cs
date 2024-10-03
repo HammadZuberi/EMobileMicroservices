@@ -13,7 +13,9 @@ namespace Ordering.Infrastructure
 			var connectionString = configuration.GetConnectionString("Database");
 
 
-			//services.AddDBContext<ApplicationDBContext>(opt => { opt.u});
+			services.AddDbContext<ApplicationDbContext>(opt => 
+			 opt.UseSqlServer(connectionString));
+
 
 			return services;
 		}
