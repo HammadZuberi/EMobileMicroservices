@@ -10,3 +10,8 @@ PS C:\Users\hamma> docker exec -it 9b79bf17a64f psql -U postgres
 \l listing
 \c CatalogDB
 \d 'listing tables
+
+
+Design
+ef migrate
+PM> Add-Migration InitialCreate -OutputDir  Data/Migration -Project Ordering.Infrastructure -Startup Ordering.API

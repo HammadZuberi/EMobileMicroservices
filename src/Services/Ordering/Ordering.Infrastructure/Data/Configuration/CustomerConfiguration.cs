@@ -10,7 +10,7 @@ namespace Ordering.Infrastructure.Data.Configuration
 			builder.HasKey(c => c.Id);
 			builder.Property(c => c.Id).HasConversion(
 				customerId => customerId.Value,
-				dbId => CustomerId.of(dbId));
+				dbId => CustomerId.Of(dbId));
 
 
 			builder.Property(c => c.Name).IsRequired().HasMaxLength(100);

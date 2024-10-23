@@ -8,7 +8,7 @@ namespace Ordering.Domain.ValueObjects
 
 		private CustomerId(Guid value) => Value = value;
 		//provide clear to create domain specifiic way customer id instance 
-		public static CustomerId of(Guid value)
+		public static CustomerId Of(Guid value)
 		{
 			//domain null 
 			ArgumentNullException.ThrowIfNull(value);
@@ -24,10 +24,11 @@ namespace Ordering.Domain.ValueObjects
 
 		private OrderName(string value) => Value = value;
 
-		public static OrderName of(string value)
+		public static OrderName Of(string value)
 		{
 			ArgumentNullException.ThrowIfNullOrWhiteSpace(value);
-			ArgumentOutOfRangeException.ThrowIfNotEqual(value.Length, defaultlenght);
+			//ArgumentOutOfRangeException.ThrowIfNotEqual(value.Length, defaultlenght);
+			ArgumentOutOfRangeException.ThrowIfGreaterThan(value.Length, defaultlenght);
 
 			return new OrderName(value);
 		}
@@ -38,7 +39,7 @@ namespace Ordering.Domain.ValueObjects
 
 		private ProductId(Guid value) => Value = value;
 		//provide clear to create domain specifiic way customer id instance 
-		public static ProductId of(Guid value)
+		public static ProductId Of(Guid value)
 		{
 			//domain null 
 			ArgumentNullException.ThrowIfNull(value);
@@ -52,7 +53,7 @@ namespace Ordering.Domain.ValueObjects
 		public Guid Value { get; }
 		private OrderId(Guid value) => Value = value;
 		//provide clear to create domain specifiic way customer id instance 
-		public static OrderId of(Guid value)
+		public static OrderId Of(Guid value)
 		{
 			//domain null 
 			ArgumentNullException.ThrowIfNull(value);

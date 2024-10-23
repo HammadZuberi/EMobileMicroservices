@@ -24,12 +24,12 @@ namespace Ordering.Domain.ValueObjects
 			PaymentMethod = paymentMethod;
 		}
 
-		public Payment of(string? cardName, string cardNumber, string expiration, string cVV, int paymentMethod)
+		public static Payment of(string? cardName, string cardNumber, string expiration, string cVV, int paymentMethod)
 		{
 			ArgumentException.ThrowIfNullOrWhiteSpace(cardName);
 			ArgumentException.ThrowIfNullOrWhiteSpace(cardNumber);
-			ArgumentException.ThrowIfNullOrWhiteSpace(CVV);
-			ArgumentOutOfRangeException.ThrowIfNotEqual(CVV.Length,3);//check CVV lenght
+			ArgumentException.ThrowIfNullOrWhiteSpace(cVV);
+			ArgumentOutOfRangeException.ThrowIfNotEqual(cVV.Length,3);//check CVV lenght
 
 			return new Payment(cardName, cardNumber, expiration, cVV, paymentMethod);
 		}

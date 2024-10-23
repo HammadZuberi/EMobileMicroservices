@@ -1,5 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Ordering.Infrastructure.Data.Interceptors;
 
 namespace Ordering.Infrastructure
 {
@@ -12,11 +14,17 @@ namespace Ordering.Infrastructure
 		{
 			var connectionString = configuration.GetConnectionString("Database");
 
+			services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
+			services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventInterceptors>();
 
-			services.AddDbContext<ApplicationDbContext>(opt => 
-			 opt.UseSqlServer(connectionString));
 
+			services.AddDbContext<ApplicationDbContext>((sp, opt) =>
+			{
+				opt.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
+				opt.UseSqlServer(connectionString);
+			});
 
+			 
 			return services;
 		}
 

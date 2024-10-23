@@ -45,33 +45,34 @@ namespace Ordering.Domain.Models
 			order.AddDomainEvents(new OrderCreatedEvent(order));
 			return order;
 		}
-		public void  Update( OrderName orderName, Address shippingAddress, Address billingAddress, Payment payment,OrderStatus orderStatus)
+		public void Update(OrderName orderName, Address shippingAddress, Address billingAddress, Payment payment, OrderStatus orderStatus)
 		{
 			OrderName = orderName;
 			ShippingAddress = shippingAddress;
 			BillingAddress = billingAddress;
 			Payment = payment;
-			Status =orderStatus;
+			Status = orderStatus;
 			AddDomainEvents(new OrderUpdatedEvent(this));
 		}
 
-		public void AddItem(ProductId productId,int quantity, decimal price)
+		public void AddItem(ProductId productId, int quantity, decimal price)
 		{
 			ArgumentOutOfRangeException.ThrowIfNegativeOrZero(quantity);
 			ArgumentOutOfRangeException.ThrowIfNegativeOrZero(price);
 
 			//internal const
-			var orderitem = new OrderItem(Id,productId, quantity, price);
+			var orderitem = new OrderItem(Id, productId, quantity, price);
 			_orderItems.Add(orderitem);
 		}
 
-		public void RemoveItem (ProductId productId)
+		public void RemoveItem(ProductId productId)
 		{
-			var orderItem= _orderItems.FirstOrDefault(p=> p.ProductId ==  productId);
+			var orderItem = _orderItems.FirstOrDefault(p => p.ProductId == productId);
 			if (orderItem != null)
 			{
 				_orderItems.Remove(orderItem);
 			}
 
+		}
 	}
 }

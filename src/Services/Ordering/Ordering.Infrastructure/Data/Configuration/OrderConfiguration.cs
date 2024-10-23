@@ -14,7 +14,7 @@ namespace Ordering.Infrastructure.Data.Configuration
 			builder.HasKey(c => c.Id);
 			builder.Property(c => c.Id).HasConversion(
 				orderId => orderId.Value,
-				dbId => OrderId.of(dbId));
+				dbId => OrderId.Of(dbId));
 
 			//every order has a cx
 			builder.HasOne<Customer>()
